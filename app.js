@@ -40,7 +40,18 @@ const getPost = (id) => {
 
 getPost(1);
 
+const getPostAsync = async (data) => {
+    await axios
+    .get(`https://jsonplaceholder.typicode.com/posts/${data}`)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((err) => {
+      throw err;
+    });
+  };
 
+  getPostAsync(2);
 
 const PORT = 3000;
 app.listen(PORT, () => {
