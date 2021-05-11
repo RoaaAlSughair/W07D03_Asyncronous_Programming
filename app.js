@@ -41,7 +41,7 @@ const getPost = (id) => {
 getPost(1);
 
 const getPostAsync = async (data) => {
-    await axios
+  await axios
     .get(`https://jsonplaceholder.typicode.com/posts/${data}`)
     .then((response) => {
       console.log(response.data);
@@ -49,9 +49,20 @@ const getPostAsync = async (data) => {
     .catch((err) => {
       throw err;
     });
+};
+
+getPostAsync(2);
+
+const appendToFile = (data) => {
+    fs.appendFile("./data.txt", `${data}`, (error) => {
+        if (error) {
+            throw error;
+        };
+        console.log("Information added successfully");
+    });
   };
 
-  getPostAsync(2);
+  appendToFile("Third Line");
 
 const PORT = 3000;
 app.listen(PORT, () => {
